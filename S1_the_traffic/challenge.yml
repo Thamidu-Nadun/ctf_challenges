@@ -1,0 +1,21 @@
+# CTFd-style challenge definition for S1 — The Traffic
+# (file-based / downloadable challenge)
+name: "S1 — The Traffic"
+category: Network
+description: |
+  00:48–01:00 IST — 
+  GuardianOS HQ faced to a intrusion. The SOC team was captured incident_traffic.pcap.
+  Find the Compromised host, C2 channel, protocol, attacker's identifier and recover the hidden flag.
+value: 100
+type: standard
+flags:
+  - RAVEN{traffic_never_lies}
+files:
+  - incident_traffic.pcap
+hints:
+  - content: "Most of the capture is noise — find the conversation that shouldn't be there."
+    cost: 5
+  - content: "Follow the stream that carries the RAVEN-17 identifier."
+    cost: 10
+  - content: "Sometimes decoded streams tell the truth."
+state: visible
