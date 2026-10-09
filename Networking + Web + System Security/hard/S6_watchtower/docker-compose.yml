@@ -1,0 +1,59 @@
+
+#  Run:    docker compose up -d --build
+#  Reset:  docker compose down && docker compose up -d --build
+
+
+services:
+
+  #  C2 (implant command-and-control, mock) 
+  c2:
+    build: ./c2
+    container_name: rt_c2
+    env_file: .env
+    environment:
+      GW_HOST: watchtower-gw
+      WT_HOST: watchtower
+      WT_PORT: "9000"
+    networks: [core]
+    restart: unless-stopped
+
+  # WATCHTOWER (segmented monitoring service, holds flag) 
+  watchtower:
+    build: ./watchtower
+    container_name: rt_watchtower
+    env_file: .env          # WATCHTOWER_API_KEY comes from this.
+    networks: [mon]
+    restart: unless-stopped
+
+  # foothold (player entry — SSH, from S5 creds)
+  foothold:
+    build: ./foothold
+    container_name: rt_foothold
+    environment:
+      SSH_USER: ${FOOTHOLD_USER}
+      SSH_PASS: ${FOOTHOLD_PASS}
+    ports:
+      - "2222:22"           # player: ssh j.portal@<host> -p 2222
+    networks: [edge, core]
+    restart: unless-stopped
+
+  # watchtower-gw (pivot bridge: core <-> mon) 
+  #  
+  watchtower-gw:
+    build: ./foothold
+    container_name: rt_watchtower_gw
+    environment:
+      SSH_USER: ${GW_USER}
+      SSH_PASS: ${GW_PASS}
+    networks: [core, mon]
+    restart: unless-stopped
+
+networks:
+  edge:
+    driver: bridge
+  core:
+    driver: bridge
+    internal: true          # no outbound internet (egress-free)
+  mon:
+    driver: bridge
+    internal: true          # no outbound internet (egress-free)

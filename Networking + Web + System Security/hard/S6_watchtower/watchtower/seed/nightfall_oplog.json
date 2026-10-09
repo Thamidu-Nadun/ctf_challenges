@@ -1,0 +1,29 @@
+{
+  "operation": "NIGHTFALL",
+  "classification": "GuardianOS // INTERNAL // WATCHTOWER-EYES-ONLY",
+  "operator": "RAVEN-17",
+  "handler": "US@FE (third-party IR contractor)",
+  "target": "GuardianOS HQ",
+  "timeline": [
+    {
+      "phase": "deployment",
+      "ts": "2026-08-10T23:55:00Z",
+      "actor": "RAVEN-17",
+      "detail": "Implant guardian_update.exe staged on GuardianOS-WS-07."
+    },
+    {
+      "phase": "incident",
+      "ts": "2026-08-11T00:40:00Z",
+      "actor": "RAVEN-17",
+      "detail": "Intrusion detected by SOC. US@FE engaged to 'investigate'."
+    },
+    {
+      "phase": "investigation",
+      "ts": "2026-08-11T01:00:00Z",
+      "actor": "you (US@FE investigator)",
+      "detail": "Investigator dispatched. Same hands that deployed the implant now 'investigate' it."
+    }
+  ],
+  "closure": "The deployment operator and the investigator share one identity: RAVEN-17. The investigation was cover. Retrieve the evidence package to confirm.",
+  "next": "/evidence"
+}
