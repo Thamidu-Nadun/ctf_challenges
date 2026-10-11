@@ -1,0 +1,12 @@
+
+#  Run:   docker compose up -d --build
+#  Hit:   http://localhost:8083/api/v3/register
+#  Reset: docker compose down && docker compose up -d --build
+
+services:
+  register:
+    build: ./server
+    container_name: rt_s3_register
+    ports:
+      - "8083:8080"        # player: POST http://localhost:8083/api/v3/register
+    restart: unless-stopped

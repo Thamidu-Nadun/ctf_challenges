@@ -1,0 +1,27 @@
+# CTFd-style challenge definition for S3 — THE IMPLANT
+# (hybrid: downloadable binary + container register server)
+name: "S3 — THE IMPLANT"
+category: Reverse Engineering
+description: |
+  
+  SOC team is given guardian_update.exe from the network traffic. decompile it. find the hidden 
+  activation code, service endpoint, headers. using that creds hit the register point and get 
+  the flag.
+value: 150
+type: standard          #
+# downloadable artifact:
+files:
+  - guardian_update.exe
+# container-based register server 
+image: YOURUSER/raventrace-s3-register:1.0
+port: 8080
+flags:
+  - RAVEN{the_implant_knows_you}
+hints:
+  - content: "strings gives you the endpoint and two headers — but not the activation code."
+    cost: 5
+  - content: "Find the decode routine: an encoded byte array XOR'd with a single-byte key."
+    cost: 10
+  - content: "Or run it under a debugger and read the decoded buffer after decode()."
+    cost: 15
+state: visible
