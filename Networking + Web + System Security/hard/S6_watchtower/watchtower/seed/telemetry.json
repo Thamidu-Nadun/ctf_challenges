@@ -1,0 +1,30 @@
+{
+  "service": "WATCHTOWER Telemetry Store",
+  "segment": "monitoring (172.32.0.0/24)",
+  "collected_beacons": [
+    {
+      "ts": "2026-08-11T00:41:07Z",
+      "source_host": "GuardianOS-WS-07",
+      "source_ip": "10.10.14.37",
+      "operator": "RAVEN-17",
+      "channel": "sync-cdn-telemetry.top:8080",
+      "note": "initial beacon after implant exec (see S1 capture)"
+    },
+    {
+      "ts": "2026-08-11T00:46:52Z",
+      "source_host": "GuardianOS-WS-07",
+      "source_ip": "10.10.14.37",
+      "operator": "RAVEN-17",
+      "channel": "c2:/api/v3/register",
+      "note": "implant registered with identity USFE-INV-07"
+    },
+    {
+      "ts": "2026-08-11T00:58:19Z",
+      "source_host": "pivot/internal",
+      "operator": "RAVEN-17",
+      "channel": "watchtower-gw -> watchtower",
+      "note": "monitoring segment reached; telemetry store queried"
+    }
+  ],
+  "hint": "Read /operations/nightfall for the full operation log, then /evidence for the package."
+}
