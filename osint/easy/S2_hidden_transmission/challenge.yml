@@ -1,0 +1,25 @@
+# CTFd-style challenge definition for S2 — Hidden Transmission
+# (container-based / OSINT web environment)
+name: "S2 — Hidden Transmission"
+category: OSINT
+description: |
+  From S1 attacker identifier is taken. Now it needs to investigate public sources. Find the connections
+  between RAVEN-17 ↔ GuardianOS, correlate attacker's project and find and recover the flag form oldest
+  artifact.
+  (all  sites are fictional / isolated lab environment.)
+value: 100
+type: standard          
+
+image: YOURUSER/raventrace-s2-osint:1.0
+# internal port that nginx serves on:
+port: 80
+flags:
+  - RAVEN{raven_was_here_first}
+hints:
+  - content: "Start with RAVEN-17."
+    cost: 5
+  - content: "Find connections between RAVEN-17 and GuardianOS."
+    cost: 10
+  - content: "Follow references to an older WATCHTOWER-related artifact."
+    cost: 15
+state: visible

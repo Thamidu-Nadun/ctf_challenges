@@ -1,0 +1,74 @@
+
+:root{
+  --ink:#1b2430; --muted:#5b6672; --line:#e2e6ea; --bg:#f4f6f8;
+  --brand:#0d3b2e; --accent:#1e9e78; --link:#1558d6; --card:#ffffff;
+  --code:#f0f3f5; --warn:#b4540a; --flagbg:#d1fae5; --flagbd:#6ee7b7;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.55;font-size:15px}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:18px 20px}
+code,.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  font-size:13px;background:var(--code);padding:1px 5px;border-radius:4px}
+pre{font-family:"SFMono-Regular",Consolas,monospace;font-size:13px;
+  background:var(--code);border:1px solid var(--line);border-radius:7px;
+  padding:12px 14px;overflow:auto;line-height:1.5}
+
+/* top bars per "site" */
+.topbar{display:flex;align-items:center;gap:10px;padding:10px 20px;
+  border-bottom:1px solid var(--line);background:#fff}
+.brand{font-weight:800;letter-spacing:.3px}
+.brand .b2{color:var(--accent)}
+.topbar .sp{flex:1}
+.topbar input[type=text]{flex:1;max-width:420px;padding:8px 12px;
+  border:1px solid #cfd6dd;border-radius:20px;font-size:14px}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:6px;
+  padding:8px 14px;font-size:14px;cursor:pointer}
+
+/* search results */
+.result{padding:12px 0;border-bottom:1px solid var(--line)}
+.result .url{color:#0a7d3c;font-size:12.5px}
+.result .title{font-size:18px;color:#1a0dab;margin:2px 0}
+.result .snip{color:#3c4450;font-size:14px}
+
+/* cards / repo / profile */
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:16px 18px;margin:14px 0}
+.muted{color:var(--muted)}
+.tag{display:inline-block;background:#eef2f5;border:1px solid var(--line);
+  border-radius:12px;padding:1px 9px;font-size:12px;color:#415}
+.kv{width:100%;border-collapse:collapse;font-size:14px}
+.kv td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.kv td:first-child{color:var(--muted);width:34%;font-weight:600}
+
+/* profile header */
+.phead{display:flex;gap:16px;align-items:center}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--brand);
+  color:#a7f3d0;display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:800}
+
+/* commit list */
+.commit{display:flex;justify-content:space-between;padding:10px 0;
+  border-bottom:1px solid var(--line);font-size:14px}
+.commit .msg{font-weight:600}
+.commit .sha{font-family:monospace;color:var(--muted);font-size:12.5px}
+
+/* archive banner */
+.archive-bar{background:#222;color:#e8e8e8;padding:8px 14px;font-size:13px;
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.archive-bar .u{color:#7fd1ff;font-family:monospace}
+.snap{padding:9px 0;border-bottom:1px solid var(--line)}
+.snap .date{font-family:monospace;color:#0a7d3c}
+
+.flag{font-family:monospace;font-weight:800;color:var(--brand);
+  background:var(--flagbg);border:1px solid var(--flagbd);border-radius:5px;
+  padding:1px 7px}
+.redacted{background:#111;color:#111;border-radius:3px;padding:0 6px;user-select:all}
+
+.note{background:#fff8ec;border-left:4px solid var(--warn);padding:10px 14px;
+  border-radius:6px;margin:12px 0;font-size:14px}
+footer.lab{margin-top:26px;padding:14px 20px;border-top:1px solid var(--line);
+  color:#97a2ad;font-size:11.5px;text-align:center}
+h1{font-size:22px}h2{font-size:18px;margin-top:22px}
