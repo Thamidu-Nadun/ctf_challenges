@@ -1,0 +1,12 @@
+
+#  Run:    docker compose up -d --build
+#  Open:   http://localhost:8082
+#  Reset:  docker compose down && docker compose up -d --build
+
+services:
+  osint:
+    build: .
+    container_name: rt_s2_osint
+    ports:
+      - "8082:80"          # player: http://localhost:8082
+    restart: unless-stopped
