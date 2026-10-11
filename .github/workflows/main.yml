@@ -25,7 +25,8 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -75,7 +76,8 @@ jobs:
               dir=$(dirname "$dockerfile")
 
               relative_path=${dir#./}
-              image_name=$(echo "$relative_path" | tr '/' '-' | tr ' ' '-' | tr '[:upper:]' '[:lower:]' | sed 's/-$//')
+              # Replace / with -, remove special chars, convert to lowercase
+              image_name=$(echo "$relative_path" | tr '/' '-' | sed 's/[^a-zA-Z0-9._-]//g' | tr '[:upper:]' '[:lower:]' | sed 's/-$//')
 
               full_image="${DOCKER_HUB_USERNAME}/${image_name}:${TAG}"
 
